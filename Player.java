@@ -2,6 +2,7 @@ class Player {
 
 
     int health;
+    Card[] playerCards;
 
     public Player(int health)
     {
@@ -11,5 +12,7 @@ class Player {
     {
         this.health = health - damageTaken;
     }
+
+
 
 }
