@@ -1,6 +1,6 @@
-class Fireball implements Card
+class devCard 
 {
-    public Fireball()
+    public devCard()
     {
 
     }
