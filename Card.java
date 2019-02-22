@@ -1,9 +1,9 @@
 public interface Card
 {
 
-    public void name(String cardName);
+    public String name();
 
-    public void damage();
+    public int getDamage();
     
-    public void mana();
+    public int manaCost();
 }

@@ -1,22 +1,28 @@
 class devCard 
 {
+
+
     public devCard()
     {
 
     }
 
-    public void name(String cardName)
+    public String name(String cardName)
     {
+        return("devCard");
 
     }
 
-    public void damage()
+    public int getDamage()
     {
-
+        //placeholder
+        return(0);
     }
 
-    public void mana()
+    public int manaCost()
     {
+        //placeholder
+        return(0);
         
     }
 }

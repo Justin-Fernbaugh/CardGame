@@ -4,7 +4,6 @@ class Player {
 
 
     public static int playerNumber;
-    //playerNumber++;
     int health;
     ArrayList<Object> playerCards = new ArrayList<Object>();
 
@@ -26,6 +25,33 @@ class Player {
     public int getHealth()
     {
         return(this.health);
+    }
+    
+    public void addCardToInventory(Object other)
+    {
+        playerCards.add(other);
+
+    }
+
+    public ArrayList<Object> getInventory()
+    {
+        return(playerCards);
+        
+    }
+
+    public String[] getCardNames()
+    {
+        String[] temp;
+        for(int i = 0; i < playerCards.size(); i++)
+        {
+            //temp[i] = playerCards.get(i).name();
+
+
+        }
+
+        String[] hhh = {"a", "a"};
+        return(hhh);
+        
     }
     
 

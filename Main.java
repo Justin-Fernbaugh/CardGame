@@ -27,6 +27,10 @@ class Main
 
     public void actionDecide(Player other)
     {
+
+        String[] cardNamesString;
+        
+
         System.out.println("What card would player" + other.getPlayerNumber() + " like to play? (FILL WITH CARDS)");
 
     }
@@ -48,7 +52,13 @@ class Main
             }
             if(turnCounter == true)
             {
+                actionDecide(player1);
                 
+            }
+            else if(turnCounter == false)
+            {
+                actionDecide(player2);
+
             }
 
         }
