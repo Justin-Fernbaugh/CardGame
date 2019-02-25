@@ -4,8 +4,8 @@ class Main
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
 
-    public static Player player1 = new Player(20);
-    public static Player player2 = new Player(20);
+    public static Player player1 = new Player(20, 1);
+    public static Player player2 = new Player(20, 2);
     public Card devCard = new Card("devCard", 10, 2);
     public static void main(String[] args) 
     {
@@ -25,7 +25,8 @@ class Main
 
     public static void endGame(Player other)
     {
-        System.out.println("Player " + other.getPlayerNumber() + " has lost the game.");
+        System.out.println(other.getHealth());
+        System.out.println("Player " + other.getPlayerInt() + " has lost the game.");
 
     }
 

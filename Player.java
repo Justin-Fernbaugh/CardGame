@@ -7,16 +7,22 @@ class Player {
     int health;
     ArrayList<Card> playerCards = new ArrayList<Card>();
     private int mana;
+    private int playerInt;
 
-    public Player(int health)
+    public Player(int health, int playerInt)
     {
         playerNumber++;
         health = this.health;
+        this.playerInt = playerInt;
     }
 
     public int getPlayerNumber()
     {
         return(playerNumber);
+    }
+    public int getPlayerInt()
+    {
+        return(this.playerInt);
     }
 
     public void takeDamage(int damageTaken)
