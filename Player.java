@@ -5,7 +5,8 @@ class Player {
 
     public static int playerNumber;
     int health;
-    ArrayList<Object> playerCards = new ArrayList<Object>();
+    ArrayList<Card> playerCards = new ArrayList<Card>();
+    private int mana;
 
     public Player(int health)
     {
@@ -22,18 +23,18 @@ class Player {
     {
         this.health = health - damageTaken;
     }
-    public int getHealth()
+    public int getHealth()  
     {
         return(this.health);
     }
     
-    public void addCardToInventory(Object other)
+    public void addCardToInventory(Card other)
     {
         playerCards.add(other);
 
     }
 
-    public ArrayList<Object> getInventory()
+    public ArrayList<Card> getInventory()
     {
         return(playerCards);
         
@@ -41,16 +42,12 @@ class Player {
 
     public String[] getCardNames()
     {
-        String[] temp;
+        String[] retrievedCards = new String[playerCards.size()];
         for(int i = 0; i < playerCards.size(); i++)
         {
-            //temp[i] = playerCards.get(i).name();
-
-
+            retrievedCards[i] = playerCards.get(i).toString();
         }
-
-        String[] hhh = {"a", "a"};
-        return(hhh);
+        return(retrievedCards);
         
     }
     

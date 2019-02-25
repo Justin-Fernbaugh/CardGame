@@ -1,42 +1,48 @@
 class Main 
 {
     //
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
 
     public static Player player1 = new Player(20);
     public static Player player2 = new Player(20);
+    public Card devCard = new Card("devCard", 10, 2);
     public static void main(String[] args) 
     {
         /*Gonna need to implement an interface "card"
         then create a class each time for a new card
         */
+        startGame();
         
     }
 
-    public void startupEntries()
+    public static void startupEntries()
     {
-        System.out.println("Card Game v0.01");
+        System.out.println(ANSI_RED + "Card Game v0.01" + ANSI_RESET);
         System.out.println("The game plays in turns with each player getting an action.");
 
     }
 
-    public void endGame(Player other)
+    public static void endGame(Player other)
     {
         System.out.println("Player " + other.getPlayerNumber() + " has lost the game.");
 
     }
 
-    public void actionDecide(Player other)
+    public static void actionDecide(Player other)
     {
 
-        String[] cardNamesString;
+        //String[] cardNamesString;
         
 
-        System.out.println("What card would player" + other.getPlayerNumber() + " like to play? (FILL WITH CARDS)");
+        String test = "test";
+        System.out.println(String.format("What card would player" + other.getPlayerNumber() + " like to play? (%s)", test));
 
     }
 
-    public void startGame()
+    public static void startGame()
     {
+        startupEntries();
         boolean turnCounter = true;
         while(true)
         {
@@ -47,9 +53,12 @@ class Main
             }
             else if(player2.getHealth() >= 0)
             {
+                System.out.println(player2.getHealth());
                 endGame(player2);
                 break;
             }
+
+            //
             if(turnCounter == true)
             {
                 actionDecide(player1);
@@ -60,6 +69,7 @@ class Main
                 actionDecide(player2);
 
             }
+            turnCounter = !turnCounter;
 
         }
     }
