@@ -4,16 +4,18 @@ class Player {
 
 
     public static int playerNumber;
-    int health;
-    ArrayList<Card> playerCards = new ArrayList<Card>();
+    private int health;
+    private ArrayList<Card> playerCards = new ArrayList<Card>();
     private int mana;
     private int playerInt;
 
     public Player(int health, int playerInt)
     {
         playerNumber++;
+        mana = 10;
         health = this.health;
         this.playerInt = playerInt;
+        this.health = 20;
     }
 
     public int getPlayerNumber()
@@ -51,7 +53,7 @@ class Player {
         String[] retrievedCards = new String[playerCards.size()];
         for(int i = 0; i < playerCards.size(); i++)
         {
-            retrievedCards[i] = playerCards.get(i).toString();
+            retrievedCards[i] = playerCards.get(i).name().toString();
         }
         return(retrievedCards);
         
