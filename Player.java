@@ -58,7 +58,7 @@ class Player {
         String[] retrievedCards = new String[playerCards.size()];
         for(int i = 0; i < playerCards.size(); i++)
         {
-            retrievedCards[i] = playerCards.get(i).name().toString();
+            retrievedCards[i] = playerCards.get(i).name().toLowerCase().toString();
         }
         return(retrievedCards);
         

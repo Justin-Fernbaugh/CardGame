@@ -16,9 +16,8 @@ class Main
         player2.addCardToInventory(devCard);
         player1.addCardToInventory(devCard);
         player2.addCardToInventory(devCard);
-        /*Gonna need to implement an interface "card"
-        then create a class each time for a new card
-        */
+
+        //
         startGame();
         
     }
@@ -47,7 +46,7 @@ class Main
         }
     }
 
-    public static void actionDecide(Player playerToDecide, player opponent)
+    public static void actionDecide(Player playerToDecide, Player opponent)
     {
         String cardsToString = "";
         String[] cardsToStringArray = new String[playerToDecide.getCardNames().length];
@@ -64,14 +63,17 @@ class Main
             }
         }
         System.out.println(String.format("What card would %s player" + playerToDecide.getPlayerInt() + " %slike to play? (%s)", ANSI_RED, ANSI_RESET, cardsToString));
-        String userInput = scanner.nextLine();
+        String userInput = scanner.nextLine().toLowerCase();
         //Check if user input is equal to card option in cardsToStringArray. - DONE
-        for(int i = 0; i < cardsToStringArray.length; i++)
+        for(int i = 0; i < playerToDecide.getInventory().size(); i++)
         {
             if(userInput.equals(cardsToStringArray[i]))
-            {;
-                opponent.takeDamage(cardtoPlay.getDamage());
+            {
+                int damageToGive = playerToDecide.getInventory().get(i).getDamage();
+                opponent.takeDamage(damageToGive);
                 playerToDecide.removeCardFromInventory(i);
+                System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent, damageToGive, opponent.getHealth()));
+                break;
             }
         }
 
