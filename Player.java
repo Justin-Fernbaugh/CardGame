@@ -41,6 +41,11 @@ class Player {
         playerCards.add(other);
 
     }
+    
+    public void removeCardFromInventory(int index)
+    {
+        playerCards.remove(index);
+    }
 
     public ArrayList<Card> getInventory()
     {

@@ -29,30 +29,31 @@ class Main
         System.out.println("The game plays in turns with each player getting an action.");
 
     }
-
-    public static void endGame(Player other)
+    public static void turnReset()
     {
-        if(other.getHealth() <= 20)
+        //add a random card to each player inventory
+    }
+
+    public static void endGame(Player playerKilled)
+    {
+        if(playerKilled.getHealth() <= 20)
         {
-            System.out.println("Health when killed: " + other.getHealth());
-            System.out.println("Player " + other.getPlayerInt() + " has lost the game.");
+            System.out.println("Health when killed: " + playerKilled.getHealth());
+            System.out.println("Player " + playerKilled.getPlayerInt() + " has lost the game.");
         }
         else
         {
-            System.out.println("Error, health left: " + other.getHealth());
+            System.out.println("Error, health left: " + playerKilled.getHealth());
         }
-        //System.out.println(other.getHealth());
-        
-
     }
 
-    public static void actionDecide(Player other)
+    public static void actionDecide(Player playerToDecide, player opponent)
     {
         String cardsToString = "";
-        String[] cardsToStringArray = new String[other.getCardNames().length];
-        for(int i = 0; i < other.getCardNames().length; i++)
+        String[] cardsToStringArray = new String[playerToDecide.getCardNames().length];
+        for(int i = 0; i < playerToDecide.getCardNames().length; i++)
         {
-            cardsToStringArray = other.getCardNames();
+            cardsToStringArray = playerToDecide.getCardNames();
             if(i + 1 < cardsToStringArray.length)
             {
                 cardsToString += cardsToStringArray[i] + ", ";
@@ -62,9 +63,17 @@ class Main
                 cardsToString += cardsToStringArray[i];
             }
         }
-        System.out.println(String.format("What card would %s player" + other.getPlayerInt() + " %slike to play? (%s)", ANSI_RED, ANSI_RESET, cardsToString));
+        System.out.println(String.format("What card would %s player" + playerToDecide.getPlayerInt() + " %slike to play? (%s)", ANSI_RED, ANSI_RESET, cardsToString));
         String userInput = scanner.nextLine();
-        //Check if user input is equal to card option in cardsToStringArray.
+        //Check if user input is equal to card option in cardsToStringArray. - DONE
+        for(int i = 0; i < cardsToStringArray.length; i++)
+        {
+            if(userInput.equals(cardsToStringArray[i]))
+            {;
+                opponent.takeDamage(cardtoPlay.getDamage());
+                playerToDecide.removeCardFromInventory(i);
+            }
+        }
 
     }
 
@@ -89,12 +98,12 @@ class Main
             //
             if(turnCounter == true)
             {
-                actionDecide(player1);
+                actionDecide(player1, player2);
                 
             }
             else if(turnCounter == false)
             {
-                actionDecide(player2);
+                actionDecide(player2, player1);
 
             }
             turnCounter = !turnCounter;

@@ -15,7 +15,7 @@ class Card
         this.damage = damage;
         this.manaCost = manaCost;
     }
-    public Card(String name, int damage, int manaCost, int effectNumber)
+    /*public Card(String name, int damage, int manaCost, int effectNumber)
     {
         cardNumber++;
         this.name = name;
@@ -23,7 +23,7 @@ class Card
         this.manaCost = manaCost;
         this.effectNumber = effectNumber;
     }
-
+*/
     public String name()
     {
         return(this.name);
