@@ -48,23 +48,23 @@ class Main
 
     public static void actionDecide(Player other)
     {
-        String temp = "";
+        String cardsToString = "";
+        String[] cardsToStringArray = new String[other.getCardNames().length];
         for(int i = 0; i < other.getCardNames().length; i++)
         {
-            String[] tempArray = other.getCardNames();
-            if(i + 1 < tempArray.length)
+            cardsToStringArray = other.getCardNames();
+            if(i + 1 < cardsToStringArray.length)
             {
-                temp += tempArray[i] + ", ";
+                cardsToString += cardsToStringArray[i] + ", ";
             }
             else
             {
-                temp += tempArray[i];
+                cardsToString += cardsToStringArray[i];
             }
-            
-
         }
-        System.out.println(String.format("What card would player" + other.getPlayerInt() + " like to play? (%s)", temp));
+        System.out.println(String.format("What card would %s player" + other.getPlayerInt() + " %slike to play? (%s)", ANSI_RED, ANSI_RESET, cardsToString));
         String userInput = scanner.nextLine();
+        //Check if user input is equal to card option in cardsToStringArray.
 
     }
 
