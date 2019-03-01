@@ -1,10 +1,12 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 class Main 
 {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
+
     public static Scanner scanner = new Scanner(System.in);
 
     public static Player player1 = new Player(20, 1);
@@ -44,6 +46,12 @@ class Main
     }
     public static void turnReset()
     {
+        Random rand = new Random();
+        int n = rand.nextInt(allCards.size());
+        int m = rand.nextInt(allCards.size());
+
+        player1.addCardToInventory(allCards.get(n));
+        player2.addCardToInventory(allCards.get(m));
         //Give each player mana back.
         //add a random card to each player inventory
     }
@@ -125,6 +133,7 @@ class Main
             if(turnCounter == true)
             {
                 actionDecide(player1, player2);
+                System.out.println("player1")
                 
             }
             else if(turnCounter == false)
