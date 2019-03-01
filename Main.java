@@ -82,27 +82,24 @@ class Main
         System.out.println(String.format("What card would %s player" + playerToDecide.getPlayerInt() + " %slike to play? (%s)", ANSI_RED, ANSI_RESET, cardsToString));
         String userInput = scanner.nextLine().toLowerCase();
         //Check if user input is equal to card option in cardsToStringArray. - DONE
-        while(true)
+        
+        for(int i = 0; i < playerToDecide.getInventory().size(); i++)
         {
-            for(int i = 0; i < playerToDecide.getInventory().size(); i++)
+            if(userInput.equals(cardsToStringArray[i]))
             {
-                if(userInput.equals(cardsToStringArray[i]))
-                {
-                    int damageToGive = playerToDecide.getInventory().get(i).getDamage();
-                    opponent.takeDamage(damageToGive);
-                    playerToDecide.removeCardFromInventory(i);
-                    System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent.getPlayerInt(), damageToGive, opponent.getHealth()));
-                    break;
-                }
-                else if(userInput.equals("{devCard}"))
-                {
-                    opponent.takeDamage(devCard.getDamage());
-                    System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent.getPlayerInt(), devCard.getDamage(), opponent.getHealth()));
-                    break;
-                }
+                int damageToGive = playerToDecide.getInventory().get(i).getDamage();
+                opponent.takeDamage(damageToGive);
+                playerToDecide.removeCardFromInventory(i);
+                System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent.getPlayerInt(), damageToGive, opponent.getHealth()));
+                break;
+            }
+            else if(userInput.equals("{devCard}"))
+            {
+                opponent.takeDamage(devCard.getDamage());
+                System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent.getPlayerInt(), devCard.getDamage(), opponent.getHealth()));
+                break;
             }
         }
-        
 
     }
 
