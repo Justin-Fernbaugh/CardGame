@@ -1,17 +1,26 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 class Main 
 {
-    //
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static Scanner scanner = new Scanner(System.in);
 
     public static Player player1 = new Player(20, 1);
     public static Player player2 = new Player(20, 2);
+
+    //name, damage, manaCost, (Optional) effect
     public static Card devCard = new Card("devCard", 10, 2);
+    public static Card fireball = new Card("FireBall", 5, 2);
+    public static Card ice = new Card("Ice", 5, 2);
+
+    //
+    public static ArrayList<Card> allCards = new ArrayList<Card>();
+    //
     public static void main(String[] args) 
     {
+        allCards.add(devCard);
         player1.addCardToInventory(devCard);
         player2.addCardToInventory(devCard);
         player1.addCardToInventory(devCard);
@@ -30,6 +39,7 @@ class Main
     }
     public static void turnReset()
     {
+        //Give each player mana back.
         //add a random card to each player inventory
     }
 
@@ -72,7 +82,7 @@ class Main
                 int damageToGive = playerToDecide.getInventory().get(i).getDamage();
                 opponent.takeDamage(damageToGive);
                 playerToDecide.removeCardFromInventory(i);
-                System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent, damageToGive, opponent.getHealth()));
+                System.out.println(String.format("Player%s has taken %s damage, and now has %s health.", opponent.getPlayerInt(), damageToGive, opponent.getHealth()));
                 break;
             }
         }
@@ -92,7 +102,7 @@ class Main
             }
             else if(player2.getHealth() <= 0)
             {
-                System.out.println(player2.getHealth());
+                //System.out.println(player2.getHealth());
                 endGame(player2);
                 break;
             }
@@ -109,7 +119,7 @@ class Main
 
             }
             turnCounter = !turnCounter;
-
+            turnReset();
         }
     }
 
